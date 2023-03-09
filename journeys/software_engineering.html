@@ -22,10 +22,42 @@
 </head>
 
 <body>
-    <script id="navbar" src="nav.js"></script>
+    <script id="navbar" src="/nav.js"></script>
 
     <h1>Software Engineering Journey</h1>
-    How to develop your (technical) skills <i>without</i> a job: Open Source, Courses, and Certifications
+
+    <h3>SDE 1 @ Amazon</h3>
+    <h5>September 2022 - January 2023 (laid off)</h5>
+    <h6>Info:</h6>
+    <ul>
+        <li>Role: Backend</li>
+        <li>Programming languages: Java, JSON, Gremlin graph query language</li>
+        <li>Databases: Amazon Neptune graph database</li>
+        <li>Database schemas: Custom property graph database schema (confidential)</li>
+        <li>Team: ~4 junior, ~3 mid-level, 2 senior; 1 SDM, 1 senior SDM</li>
+    </ul>
+    <h6>Accomplishments:</h6>
+    <ol>
+        <li>Fix unhandled edge case - debug convoluted logic</li>
+        <li>Increase test/code coverage - add unit and integration tests for a Guice module</li>
+        <li>Implement automatic generation of test reports - use IaC and AWS IAM to generate JUnit test report in alpha
+            and beta stages of CI/CD pipline</li>
+        <li>API migration - modified endpoints and implemented changes across the codebase (validators, traversals,
+            endpoints)</li>
+    </ol>
+    <h6>Challenges:</h6>
+    <ol>
+        <li>Helped resolve disagreement between two senior engineers - they disagreed on where to place API validation
+        </li>
+        <li>Huge unfamiliar codebase - got to learn inversion of control (IoC) / dependency injection via Google Guice
+            [confusing at first], skill of code navigation (in IntelliJ IDEA), dependency mocking (Mockito)</li>
+        <li>Unfamiliar internal tools - CRUX (code review web platform & CLI), Brazil dependency management and CLI
+            build tools, AWS console (IAM, S3, CloudWatch, ..), Pipelines (CI/CD pipelines), IaC (internal amazon IaC
+            platform)</li>
+        <li>Rusty on Java - picked it (back) up quickly and learned some more in the process</li>
+    </ol>
+
+    <h3>How to develop your (technical) skills <i>without</i> a job: Open Source, Courses, and Certifications</h3>
     <br>(These three benefit resumé.)
     <ul>
         <li>Open Source: interesting, real project, collaboration, closer to real SWE work (?)</li>
@@ -46,7 +78,8 @@
         <li>Open Source: interesting, real project, collaboration, closer to real SWE work (?)</li>
         <li>CHANGED: Courses are kind of irrelevant. Real project & work experience are
             highly superior, because what courses give you is a really good <i>theoretical</i> understanding.</li>
-        <li>CHANGED: Certifications (certs) are still pretty good, especially AWS certs, because they provide practical
+        <li>CHANGED: Certifications (certs) are still pretty good, especially AWS certs, because they provide
+            practical
             understanding & usage. AWS is also a really popular cert.</li>
     </ul>
 
@@ -54,6 +87,75 @@
     <ul>
         <li>Competitions develop people and technical skills and are <i>competitive</i> :)</li>
         <li>Tech. conferences are great; you learn, hopefully a lot, and you gain exposure to fellow techies</li>
+    </ul>
+
+    <h3>Job Search since Feb. 2023</h3>
+    <h4>March Update</h4>
+    <p>Accomplishments: updated resumé over >3 iterations. current version on github</p>
+    <p>Insights: discovered CS Career Hub discord server, some reddit communities, refer.me,
+        Simplify.jobs (POGGERS); discovered that I like working with Cloud and GoLang</p>
+    <p>Joys: joined ThePrimeagen discord server</p>
+    <p>Loves: loved ThePrimeagen's YouTube content; discovered I love Rust (even though I haven't directly used it;
+        I'll
+        take a modernized version of C++ anyday because I love C++)</p>
+    <p>Bonus: ChatGPT was the initial step into discovering many other things (tools, communities, sites, services,
+        ..)
+        and getting insight :)</p>
+    <p>Links: <a href="refer.me/210729695e/join">Refer.me referral link</a></p>
+
+    <h3>Paxos Distributed K-V Store/Database Project [<a
+            href="https://github.com/nicomwong/Paxos-Distributed-Key-Value-Store/blob/main/server.py">GitHub</a>]</h3>
+    <h5>Challenges</h5>
+    <ul>
+        <li>Developed from scratch. Requirement was to implement the protocol that we learned in class.</li>
+        <li>Applied theoretical multi-threading and conurrency concepts (and got real experience with it)</li>
+        <li>Complex multi-threading
+            <ul>
+                <li>Server class handles the following via multiple threads:
+                    <ul>
+                        <li>CLI input</li>
+                        <li>receiving incoming messages</li>
+                        <li>processing a queue</li>
+                    </ul>
+                </li>
+                <li>It also handles shared state/memory across the threads via class instance variables.</li>
+                <li>The reason for this is that the protocol can have many instances running throughout the distributed
+                    system at once.
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <h5>Takeaways</h5>
+    <ul>
+        <li>I loved the experience of working through the complexity of the distributed system and solving how
+            to design the multi-threading and shared state problems.</li>
+    </ul>
+
+    <h3>UC Santa Barbara</h3>
+    <h4>Computer Engineering</h4>
+    <h5>Learning highlights</h5>
+    <h6>Distributed Systems</h6>
+    <ul>
+        <li>Mutexes: lock around a piece of data that more than one entity has access to</li>
+        <li>Logical clock protocol (Lamport): a server's perspective knows the relative ordering of events it has seen
+        </li>
+        <li>Vector clock protocol: a server's perspective knows the relative ordering of events it has seen
+            <i>per server</i>
+        </li>
+        <li>Byzantine Fault-Tolerance: handling cases of server failure or corruption (i.e. it is hacked/compromised)
+        </li>
+        <li>Paxos and Multi-Paxos Consensus protocols:
+            <ul>
+                <li>Purpose: Replicate a distributed state machine in a distributed system.</li>
+                <li>Consistency: Data consistency is gauranteed by the protocol</li>
+                <li>Fault-tolerance: as long as a majority of servers are alive, these properties are gauranteed</li>
+                <li>Scalability: Multi-Paxos is the most efficient version of Paxos Consensus. It limits the maximum
+                    number of rounds to 2 (?) per replication phase (which happens whenever the state machine is
+                    updated). The maximum number of rounds for the leader phase is 2(?).</li>
+                <li>Multi-Paxos vs. Paxos: Multi-Paxos eliminates the 3rd phase of Basic Paxos; Basic Paxos has 3
+                    phases.</li>
+            </ul>
+        </li>
     </ul>
 </body>
 
